@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        शुभ विवाह - राधा संग कृष्ण
-        प्रेषक : सूबेदार सरोज
-        पता : छानी जाकातनाका
-
-    </title>
+    <title>Wedding Reception - Shobhita & Rahul</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -41,6 +36,34 @@
             padding: 0 20px;
         }
         
+        /* Music Controls */
+   /*     .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 3000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .music-controls:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+        
+        .music-controls i {
+            font-size: 1.5rem;
+            color: var(--maroon);
+        }
+      */  
         /* Fixed Header */
         .fixed-header {
             position: fixed;
@@ -49,30 +72,156 @@
             background: linear-gradient(to right, var(--maroon), var(--dark-red));
             color: white;
             text-align: center;
-            padding: 15px 0;
+            padding: 12px 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             font-family: 'Tangerine', cursive;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
         }
         
-        /* Ganesh Images */
-        .ganesh-left, .ganesh-right {
+        /* Interactive Invitation Card */
+        .invitation-overlay {
             position: fixed;
-            top: 80px;
-            width: 120px;
-            height: 120px;
-            z-index: 100;
-            opacity: 0.9;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
         }
         
-        .ganesh-left {
-            left: 20px;
+        .card-container {
+            width: 100%;
+            max-width: 500px;
+            height: 550px;
+            perspective: 1500px;
         }
         
-        .ganesh-right {
-            right: 20px;
-            transform: scaleX(-1);
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transform: rotateY(180deg); /* Start with back side visible */
+        }
+        
+        .card.flipped {
+            transform: rotateY(0deg); /* Show front side when flipped */
+        }
+        
+        .card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+    
+    .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, var(--maroon), var(--dark-red));
+            color: white;
+            border: 8px solid var(--gold);
+            transform: rotateY(180deg); /* Front is initially hidden */
+        }
+        
+        .card-back {
+            background: white;
+            color: #333;
+            border: 5px solid var(--gold);
+        }
+        
+        .card-ganesha-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .card-couple-names {
+            font-family: 'Tangerine', cursive;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .open-invitation {
+            background: var(--gold);
+            color: var(--maroon);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Hind', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .open-invitation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #e6b413;
+        }
+        
+        .card-back-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--maroon);
+        }
+        
+        .card-back-text {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        /* Main Content */
+        .main-content {
+            animation: fadeIn 1.5s ease;
         }
         
         /* Header Section */
@@ -99,9 +248,9 @@
         
         .ganesha-title {
             font-family: 'Tangerine', cursive;
-            font-size: 5rem;
+            font-size: 4rem;
             color: var(--gold);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: glow 3s ease-in-out infinite alternate;
         }
@@ -113,7 +262,7 @@
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--gold);
@@ -121,113 +270,33 @@
         
         .subtitle {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
             letter-spacing: 3px;
         }
         
         .date {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
             letter-spacing: 2px;
             background-color: rgba(212, 175, 55, 0.2);
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 5px;
             display: inline-block;
             border: 2px solid var(--gold);
         }
         
-        /* Interactive Invitation Card */
-        .invitation-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        
-        .invitation-card {
-            position: relative;
-            max-width: 600px;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            border: 5px solid var(--gold);
-            text-align: center;
-            animation: cardAppear 1s ease-out;
-            transform-style: preserve-3d;
-        }
-        
-        @keyframes cardAppear {
-            0% { transform: scale(0.5) rotateY(180deg); opacity: 0; }
-            100% { transform: scale(1) rotateY(0deg); opacity: 1; }
-        }
-        
-        .card-ganesha-title {
-            font-family: 'Tangerine', cursive;
-            font-size: 4rem;
-            color: var(--maroon);
-            margin-bottom: 1rem;
-        }
-        
-        .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark-red);
-        }
-        
-        .invitation-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        .open-invitation {
-            background: linear-gradient(to right, var(--maroon), var(--dark-red));
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Hind', sans-serif;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-        
-        .open-invitation:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        /* Main Content (initially hidden) */
-        .main-content {
-            display: none;
-            animation: fadeIn 1.5s ease;
-        }
-        
-        /* Couple Section */
-        .couple-section {
-            padding: 100px 0;
+        /* Reception Details Section */
+        .reception-section {
+            padding: 80px 0;
             background-color: var(--light-gold);
             text-align: center;
-            position: relative;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
             color: var(--maroon);
             position: relative;
         }
@@ -241,177 +310,115 @@
             margin: 20px auto;
         }
         
-        .couple-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 50px;
-        }
-        
-        .couple {
-            width: 320px;
-            text-align: center;
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .couple-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid var(--gold);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .couple-name {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: var(--dark-red);
-            font-weight: 600;
-        }
-        
-        .and {
-            font-family: 'Tangerine', cursive;
-            font-size: 5rem;
-            color: var(--maroon);
-            align-self: center;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Details Section */
-        .details-section {
-            padding: 100px 0;
-            background-color: var(--cream);
-        }
-        
-        .details-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .detail-card {
-            flex: 1;
-            min-width: 300px;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s ease;
-            border: 1px solid var(--gold);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .detail-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--maroon), var(--gold));
-        }
-        
-        .detail-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .detail-icon {
-            font-size: 3rem;
-            color: var(--maroon);
-            margin-bottom: 20px;
-        }
-        
-        .detail-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--dark-red);
-            font-weight: 600;
-        }
-        
-        .detail-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-        
-        /* Blessings Section */
-        .blessings-section {
-            padding: 100px 0;
-            background-color: var(--light-gold);
-            text-align: center;
-        }
-        
-        .blessings-content {
+        .reception-details {
             max-width: 800px;
             margin: 0 auto;
-            background-color: white;
-            padding: 50px;
+            background: white;
+            padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 2px solid var(--gold);
         }
         
-        .blessings-text {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            font-style: italic;
+        .detail-item {
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        .family-names {
+        .detail-label {
             font-size: 1.3rem;
+            color: var(--dark-red);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        /* Family Details Section */
+        .family-section {
+            padding: 80px 0;
+            background-color: var(--cream);
+        }
+    
+    #family-details { padding: 80px 0;
+            background-color: var(--light-gold);
+            text-align: center;
+        
+        
+    }
+        
+        .family-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .family-card {
+            flex: 1;
+            min-width: 280px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+        
+        .family-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .family-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             color: var(--dark-red);
             font-weight: 600;
         }
         
-        /* Footer */
+        .family-members {
+            list-style: none;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Footer with RSVP */
         footer {
             background-color: var(--maroon);
             color: white;
-            padding: 50px 0;
+            padding: 40px 0;
             text-align: center;
         }
         
         .footer-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .footer-logo {
             font-family: 'Tangerine', cursive;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .rsvp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
             color: var(--gold);
         }
         
         .contact-details {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
+            gap: 30px;
+            margin: 25px 0;
             flex-wrap: wrap;
         }
         
@@ -419,37 +426,28 @@
             text-align: center;
         }
         
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--gold);
+        .contact-name {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
-        .contact-text {
+        .contact-relation {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .contact-numbers {
             font-size: 1.1rem;
         }
         
         .blessing {
             font-style: italic;
-            margin: 30px 0;
+            margin: 25px 0;
             color: #f0f0f0;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             line-height: 1.8;
-        }
-        
-        .social-icons {
-            margin-top: 20px;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.8rem;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: var(--gold);
         }
         
         /* Animations */
@@ -493,62 +491,130 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
             }
             
             .ganesha-title {
-                font-size: 4rem;
+                font-size: 3.2rem;
             }
             
             .subtitle {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
             .fixed-header {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                padding: 10px 0;
             }
             
-            .ganesh-left, .ganesh-right {
-                width: 80px;
-                height: 80px;
-                top: 60px;
+            .card-container {
+                height: 480px;
             }
             
-            .couple-container {
-                flex-direction: column;
-            }
-            
-            .and {
-                transform: rotate(90deg);
-                margin: 20px 0;
-            }
-            
-            .detail-card {
-                min-width: 100%;
-            }
-            
-            .invitation-card {
-                margin: 20px;
-                padding: 30px 20px;
+            .card-front, .card-back {
+                padding: 15px 10px;
             }
             
             .card-ganesha-title {
                 font-size: 3rem;
+                margin-bottom: 0.8rem;
             }
             
             .card-title {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .card-couple-names {
+                font-size: 3rem;
+                margin: 1rem 0;
+            }
+            
+            .open-invitation {
+                padding: 10px 25px;
+                font-size: 1rem;
+                margin-top: 15px;
+            }
+            
+            .family-card {
+                min-width: 100%;
+            }
+            
+            .reception-details {
+                padding: 25px 15px;
+            }
+            
+            .section-title {
                 font-size: 2rem;
+            }
+            
+        /*    .music-controls {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    */    
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .ganesha-title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .date {
+                font-size: 1.2rem;
+                padding: 10px 18px;
+            }
+            
+            .card-container {
+                height: 420px;
+            }
+            
+            .card-ganesha-title {
+                font-size: 2.5rem;
+            }
+            
+            .card-couple-names {
+                font-size: 2.5rem;
+                margin: 0.8rem 0;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .fixed-header {
+                font-size: 2.5rem;
+            }
+            
+            .open-invitation {
+                padding: 8px 20px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
+  /*  <!-- Music Controls 
+    <div class="music-controls" id="musicToggle">
+        <i class="fas fa-music"></i>
+    </div>
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+  */
+-->
     <!-- Fixed Header -->
-    <div class="fixed-header">राधा संग कृष्ण</div>
-
-    <!-- Ganesh Images -->
-    <img src="https://cdn.pixabay.com/photo/2017/08/15/11/44/ganesha-2643070_1280.png" alt="Ganesh" class="ganesh-left">
-    <img src="https://cdn.pixabay.com/photo/2017/08/15/11/44/ganesha-2643070_1280.png" alt="Ganesh" class="ganesh-right">
+    <div class="fixed-header">꧁Shobhita & Rahul꧂</div>
 
     <!-- Floating Elements -->
     <div class="floating-elements">
@@ -560,128 +626,176 @@
 
     <!-- Interactive Invitation Card Overlay -->
     <div class="invitation-overlay" id="invitationOverlay">
-        <div class="invitation-card">
-            <div class="card-ganesha-title">श्री गणेशाय नमः</div>
-            <h2 class="card-title">आप सादर आमंत्रित हैं</h2>
-            <p class="invitation-text">
-                परम पूज्य श्री राम शर्मा एवं श्रीमती सीता शर्मा<br>
-                तथा<br>
-                परम पूज्य श्री हरीश पटेल एवं श्रीमती गीता पटेल<br><br>
-                आपको सादर आमंत्रित करते हैं अपनी संतानों<br>
-                <strong>राधा</strong> एवं <strong>कृष्ण</strong> के शुभ विवाह के पावन अवसर पर
-            </p>
-            <button class="open-invitation" id="openInvitationBtn">निमंत्रण पत्र खोलें</button>
+        <div class="card-container">
+            <div class="card" id="invitationCard">
+                <div class="card-front">
+                    <div class="card-ganesha-title">।। धन निरंकार जी ।।</div>
+                    <h2 class="card-title">You Are Cordially Invited</h2>
+                    <div class="card-couple-names">Shobhita weds Rahul</div>
+                    <p style="font-size: 1.1rem; margin-bottom: 15px;">to their wedding reception</p>
+                    <button class="open-invitation" id="openInvitationBtn">Open Invitation</button>
+                </div>
+                <div class="card-back">
+                    <h2 class="card-back-title">Wedding Reception</h2>
+                    <p class="card-back-text">
+                        Shri Subedar Saroj & Smt. Sushila Saroj<br>
+                        welcome the honor of your gracious presence<br>
+                        to celebrate the wedding reception of their daughter
+                    </p>
+                    <div class="card-couple-names" style="color: var(--maroon); font-size: 2.5rem;">Shobhita & Rahul</div>
+                    <p class="card-back-text">
+                        (Son of Shri Ramshiromani Saroj & Smt. Sheela Saroj)<br><br>
+                        Saturday, 11th October, 2025<br>
+                        7:30 pm onwards<br><br>
+                        at Shantanu Party Lawns<br>
+                        Opp. Chhani Gurudhwara<br>
+                        Nr. Saptpadi Party Plot, Chhani, Vadodara -390024
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Main Content (initially hidden) -->
+    <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <!-- Header Section -->
         <header>
             <div class="header-content">
-                <div class="ganesha-title">श्री गणेशाय नमः</div>
-                <h1>राधा & कृष्ण</h1>
-                <p class="subtitle">शुभ विवाह </p>
-                <p class="date">२५ दिसम्बर, २०२३</p>
+                <div class="ganesha-title">।। धन निरंकार जी ।।</div>
+                <h1>Shobhita & Rahul</h1>
+                <p class="subtitle">Wedding Reception</p>
+                <p class="date">Saturday, 11th October, 2025</p>
             </div>
         </header>
 
-        <!-- Couple Section -->
-        <section class="couple-section">
+        <!-- Reception Details Section -->
+        <section class="reception-section">
             <div class="container">
-                <h2 class="section-title">दम्पत्ति परिचय</h2>
-                <div class="couple-container">
-                    <div class="couple">
-                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="राधा" class="couple-img">
-                        <h3 class="couple-name">राधा शर्मा</h3>
-                        <p>श्री राम एवं श्रीमती सीता शर्मा की सुपुत्री, राधा एक प्रतिभाशाली शास्त्रीय नृत्यांगना हैं जो अपनी कला के माध्यम से भारतीय संस्कृति का प्रसार करने में आनंद पाती हैं।</p>
+                <h2 class="section-title">Reception Details</h2>
+                <div class="reception-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Hosts</div>
+                        <div class="detail-value">Shri Subedar Saroj & Smt. Sushila Saroj</div>
                     </div>
-                    <div class="and">&</div>
-                    <div class="couple">
-                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="कृष्ण" class="couple-img">
-                        <h3 class="couple-name">कृष्ण पटेल</h3>
-                        <p>श्री हरीश एवं श्रीमती गीता पटेल के सुपुत्र, कृष्ण एक सॉफ्टवेयर इंजीनियर हैं जो पारिवारिक परंपराओं को महत्व देते हैं और अपने खाली समय में बांसुरी बजाने का आनंद लेते हैं।</p>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Celebrating</div>
+                        <div class="detail-value">The wedding reception of their daughter Shobhita & Rahul<br>(Son of Shri Ramshiromani Saroj & Smt. Sheela Saroj)</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Date & Time</div>
+                        <div class="detail-value">Saturday, 11th October, 2025<br>7:30 pm onwards</div>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Venue</div>
+                        <div class="detail-value">Shantanu Party Lawns<br>Opp. Chhani Gurudhwara<br>Nr. Saptpadi Party Plot, Chhani, Vadodara -390024</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Details Section -->
-        <section class="details-section">
+        <!-- Family Details Section -->
+        <section class="family-section">
             <div class="container">
-                <h2 class="section-title">विवाह कार्यक्रम</h2>
-                <div class="details-container">
-                    <div class="detail-card">
-                        <i class="fas fa-fire-alt detail-icon"></i>
-                        <h3 class="detail-title">हल्दी समारोह</h3>
-                        <p class="detail-text">२३ दिसम्बर, २०२३<br>सुबह १०:०० बजे<br><br>शर्मा निवास<br>मुंबई, भारत</p>
+                <h2 id="family-details" class="section-title">Family Details</h2>
+                <div class="family-container">
+                    <div class="family-card">
+                        <h3 class="family-title">Host Family</h3>
+                        <ul class="family-members">
+                            <li>Shri Subedar Saroj</li>
+                            <li>Smt. Sushila Saroj</li>
+                        </ul>
                     </div>
-                    <div class="detail-card">
-                        <i class="fas fa-hands detail-icon"></i>
-                        <h3 class="detail-title">मेहंदी समारोह</h3>
-                        <p class="detail-text">२४ दिसम्बर, २०२३<br>दोपहर २:०० बजे<br><br>पटेल निवास<br>मुंबई, भारत</p>
+                    
+                    <div class="family-card">
+                        <h3 class="family-title">Groom's Family</h3>
+                        <ul class="family-members">
+                            <li>Shri Ramshiromani Saroj</li>
+                            <li>Smt. Sheela Saroj</li>
+                        </ul>
                     </div>
-                    <div class="detail-card">
-                        <i class="fas fa-ring detail-icon"></i>
-                        <h3 class="detail-title">विवाह समारोह</h3>
-                        <p class="detail-text">२५ दिसम्बर, २०२३<br>शाम ६:०० बजे<br><br>श्री गणेश मंदिर<br>मुंबई, भारत</p>
+                    
+                    <div class="family-card">
+                        <h3 class="family-title">Family Members</h3>
+                        <ul class="family-members">
+                            <li>Shri Chandrabali Saroj</li>
+                            <li>Shri Subash Saroj</li>
+                            <li>Shri Lalchand Saroj</li>
+                            <li>Shri Dhyanchand Saroj</li>
+                            <li>Shri Dinanath Saroj</li>
+                            <li>Shri Anil Kumar Saroj</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Blessings Section -->
-      
-      
-      
-        <!-- Footer -->
+        <!-- Footer with RSVP -->
         <footer>
             <div class="container">
                 <div class="footer-content">
-                    <div class="footer-logo">राधा & कृष्ण</div>
+                    <div class="footer-logo">Shobhita & Rahul</div>
+                    <h3 class="rsvp-title">R.S.V.P.</h3>
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div class="contact-text">शर्मा परिवार:<br>+91 98765 43210</div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div class="contact-text">पटेल परिवार:<br>+91 97654 32109</div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-text">श्री गणेश मंदिर<br>मुंबई, भारत</div>
+                            <div class="contact-name">Shri Subedar Saroj</div>
+                            <div class="contact-relation">(Son of Shri Chandrabali Saroj & Late Smt. Lachi Devi)</div>
+                            <div class="contact-numbers">Mobile: 9898004346, 8320937948</div>
                         </div>
                     </div>
                     
-                    <p class="blessing">"विवाह के इस पवित्र बंधन में बंधकर आप दोनों सुखी और समृद्ध जीवन व्यतीत करें, यही हमारी ईश्वर से प्रार्थना है।"</p>
-                    
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                    </div>
+                    <p class="blessing">Saroj Family & Relatives<br>meli buwa ki chhadi me jalul jalul se aana</p> <p><b>- Aradhya Saroj</b></p>
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // Interactive invitation card functionality
-        document.getElementById('openInvitationBtn').addEventListener('click', function() {
-            // Hide the invitation overlay
-            document.getElementById('invitationOverlay').style.display = 'none';
-            
-            // Show the main content
-            document.getElementById('mainContent').style.display = 'block';
-            
-            // Scroll to top of the page
-            window.scrollTo(0, 0);
-            
-            // Add flower petals animation
-            createFlowerPetals(window.innerWidth/2, window.innerHeight/2);
+   /*   // Music controls 
+       const musicToggle = document.getElementById('musicToggle');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let isPlaying = false;
+        
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+                isPlaying = false;
+            } else {
+                backgroundMusic.play();
+                musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+            }
         });
+   */     
+        // Step 1: Page load pe bas petals chalao, music mat chalao
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        createFlowerPetals(window.innerWidth/2, window.innerHeight/2);
+    }, 500);
+});
+
+// Step 2: Jab "Open Invitation" click ho
+document.getElementById('openInvitationBtn').addEventListener('click', function() {
+    // Card flip hoga
+    document.getElementById('invitationCard').classList.add('flipped');
+
+    // ✅ Yaha se music start hoga
+  /*  if (!isPlaying) {
+        backgroundMusic.play();
+        musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
+    }
+*/
+    // 5 second baad overlay remove ho jaayega
+    setTimeout(function() {
+        document.getElementById('invitationOverlay').style.display = 'none';
+        createFlowerPetals(window.innerWidth/2, window.innerHeight/2);
+    }, 5000);
+});
 
         // Floating animation for elements when they come into view
         const observerOptions = {
@@ -699,7 +813,7 @@
         }, observerOptions);
         
         // Observe elements for animation
-        document.querySelectorAll('.couple, .detail-card').forEach(el => {
+        document.querySelectorAll('.reception-details, .family-card').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s, transform 0.5s';
@@ -708,7 +822,7 @@
 
         // Add flower petals animation on click
         document.addEventListener('click', function(e) {
-            if (e.target.closest('header') || e.target.closest('.invitation-card')) {
+            if (e.target.closest('header') || e.target.closest('.card-front')) {
                 createFlowerPetals(e.clientX, e.clientY);
             }
         });
